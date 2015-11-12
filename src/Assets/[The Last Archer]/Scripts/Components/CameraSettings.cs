@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(Camera))]
-public class CameraSettings : MonoBehaviour 
+namespace TheLastArcher
 {
-	private Camera m_camera;
-
-	void Start()
+	[RequireComponent(typeof(Camera))]
+	public class CameraSettings : MonoBehaviour 
 	{
-		m_camera = GetComponent<Camera> ();
+		private Camera m_camera;
 
-		if (m_camera == null) m_camera = Camera.main;
+		void Start()
+		{
+			m_camera = GetComponent<Camera> ();
+		}
 	}
 }

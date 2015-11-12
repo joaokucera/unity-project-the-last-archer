@@ -1,40 +1,47 @@
-﻿using UnityEngine;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
-public class AnimationController : MonoBehaviour 
+namespace TheLastArcher
 {
-	public enum AnimationParameter { Idle, Walk, Shoot, Hit, Die }
-
-	private Animator m_animator;
-	private Dictionary<AnimationParameter, int> m_parameters;
-
-	void Start()
+	[Serializable]
+	public class AnimationController : IAnimationController
 	{
-		m_animator = GetComponent<Animator> ();
+		private Dictionary<AnimationParameter, int> m_parametersDictionary = new Dictionary<AnimationParameter, int> ();
+		private IMotorController m_controller;
+		private Animator m_animator;
 
-		CreateParameters ();
-	}
+		#region IAnimationController implementation
 
-	private void CreateParameters()
-	{
-		m_parameters = new Dictionary<AnimationParameter, int> ()
+		public void Setup (IMotorController controller, Animator animator)
 		{
-			{ AnimationParameter.Idle, Animator.StringToHash ("idle") },
-			{ AnimationParameter.Walk, Animator.StringToHash ("walk") },
-			{ AnimationParameter.Shoot, Animator.StringToHash ("shoot") },
-			{ AnimationParameter.Hit, Animator.StringToHash ("hit") },
-			{ AnimationParameter.Die, Animator.StringToHash ("die") },
-		};
-	}
+			m_controller = controller;
+			m_animator = animator;
+			
+			SetParameters ();
+		}
 
-	public void SetAnimation(AnimationParameter parameter)
-	{
-		int id;
-		if (m_parameters.TryGetValue (parameter, out id)) 
+		public void DoAnimation (AnimationParameter parameter)
 		{
-			m_animator.SetTrigger (id);
+			int id;
+
+			if (m_parametersDictionary.TryGetValue (parameter, out id))
+			{
+				m_animator.SetTrigger (id);
+			}
+		}
+
+		#endregion
+
+		private void SetParameters()
+		{
+			for (int i = 0; i < m_animator.parameters.Length; i++)
+			{
+				var key = (AnimationParameter)Enum.Parse(typeof(AnimationParameter), m_animator.parameters[i].name);
+				
+				m_parametersDictionary.Add(key, m_animator.parameters[i].nameHash);
+			}
 		}
 	}
 }

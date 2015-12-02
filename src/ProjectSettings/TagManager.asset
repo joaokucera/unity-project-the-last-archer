@@ -42,14 +42,11 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: Background
-    uniqueID: 1517882373
+    uniqueID: 1395544795
     locked: 0
-  - name: Player
-    uniqueID: 2071830049
+  - name: Middleground
+    uniqueID: 1932849231
     locked: 0
-  - name: Enemy
-    uniqueID: 1886538161
-    locked: 0
-  - name: Weapon
-    uniqueID: 1252120225
+  - name: Foreground
+    uniqueID: 631841577
     locked: 0

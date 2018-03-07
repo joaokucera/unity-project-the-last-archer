@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: bdd6c4b4b8f20448ebdb57234dc182cb
+timeCreated: 1520460259
+licenseType: Pro
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: DragonSlapper
+  fontNames:
+  - DragonSlapper
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,5 +1,4 @@
-﻿#if UNITY_EDITOR
-using System.IO;
+﻿using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,25 +6,25 @@ namespace TheLastArcher
 {
 	public static class FoldersCreator 
 	{
-		[MenuItem("JK Tools / Create Project Folders")]
+		[MenuItem("Tools / Create Project Folders")]
 		public static void CreateProjectFolders()
 		{
 			string[] folderNames = 
 			{ 
 				"Animations", 
 				"Animators", 
-				"Audio", "Audio/Music", "Audio/SoundEffects", 
-				"Fonts", 
+				"Audios", 
+                "Editor",
+                "Fonts", 
 				"Gizmos",
 				"Materials", 
 				"Models", 
 				"Prefabs", 
 				"Resources", 
 				"Scenes", 
-				"Scripts", "Scripts/Components", "Scripts/Editor", 
+				"Scripts", 
 				"Shaders", 
-				"Textures",
-				"WebPlayerTemplates"
+				"Textures"
 			};
 
 			for (int i = 0; i < folderNames.Length; i++) 
@@ -50,4 +49,3 @@ namespace TheLastArcher
 		}
 	}
 }
-#endif

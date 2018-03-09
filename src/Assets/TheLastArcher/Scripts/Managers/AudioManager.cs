@@ -11,12 +11,12 @@ public class AudioManager : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
 
-    public void OnVolumeChanged(float value)
+    public void VolumeChanged(float value)
     {
         _audioSource.volume = value;
     }
 
-    public void OnFXChanged(bool enable)
+    public void FXChanged(bool enable)
     {
         _isFXEnabled = enable;
     }

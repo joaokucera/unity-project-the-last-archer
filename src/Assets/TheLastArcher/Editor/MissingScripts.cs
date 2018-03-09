@@ -1,14 +1,13 @@
-﻿#if UNITY_EDITOR
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 namespace TheLastArcher
 {
 	public class MissingScripts : EditorWindow
 	{
-		static int go_count = 0, components_count = 0, missing_count = 0;
+        private static int obj_count = 0, components_count = 0, missing_count = 0;
 	
-		void OnGUI()
+		private void OnGUI()
 		{
 			if (GUILayout.Button("Find Missing Scripts in selected GameObjects"))
 			{
@@ -16,7 +15,7 @@ namespace TheLastArcher
 			}
 		}
 
-		[MenuItem("JK Tools / Find Missing Scripts Recursively")]
+		[MenuItem("Tools / Find Missing Scripts Recursively")]
 		public static void ShowWindow()
 		{
 			EditorWindow.GetWindow(typeof(MissingScripts));
@@ -24,25 +23,25 @@ namespace TheLastArcher
 
 		private static void FindInSelected()
 		{
-			GameObject[] go = Selection.gameObjects;
-			go_count = 0;
-
+            obj_count = 0;
 			components_count = 0;
 			missing_count = 0;
 
-			foreach (GameObject g in go)
+            GameObject[] objs = Selection.gameObjects;
+
+            foreach (GameObject obj in objs)
 			{
-				FindInGO(g);
+				FindInGameObject(obj);
 			}
 
-			Debug.Log(string.Format("Searched {0} GameObjects, {1} components, found {2} missing", go_count, components_count, missing_count));
+			Debug.Log(string.Format("Searched {0} GameObjects, {1} components, found {2} missing", obj_count, components_count, missing_count));
 		}
 		
-		private static void FindInGO(GameObject g)
+        private static void FindInGameObject(GameObject obj)
 		{
-			go_count++;
+			obj_count++;
 
-			Component[] components = g.GetComponents<Component>();
+			Component[] components = obj.GetComponents<Component>();
 
 			for (int i = 0; i < components.Length; i++)
 			{
@@ -51,8 +50,8 @@ namespace TheLastArcher
 				if (components[i] == null)
 				{
 					missing_count++;
-					string s = g.name;
-					Transform t = g.transform;
+					string s = obj.name;
+					Transform t = obj.transform;
 
 					while (t.parent != null) 
 					{
@@ -60,15 +59,14 @@ namespace TheLastArcher
 						t = t.parent;
 					}
 
-					Debug.Log (s + " has an empty script attached in position: " + i, g);
+					Debug.Log (s + " has an empty script attached in position: " + i, obj);
 				}
 			}
 
-			foreach (Transform childT in g.transform)
+            foreach (Transform child in obj.transform)
 			{
-				FindInGO(childT.gameObject);
+				FindInGameObject(child.gameObject);
 			}
 		}
 	}
 }
-#endif

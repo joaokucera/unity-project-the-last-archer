@@ -5,7 +5,7 @@ using UnityEngine.UI;
 [Serializable]
 public class UIUpgradesPopup : UIPopup
 {
-    private readonly string _tag = "Upgrade";
+    private readonly string _tag = "UpgradeItem";
 
     [SerializeField]
     private Transform _upgradesParent;
@@ -17,11 +17,9 @@ public class UIUpgradesPopup : UIPopup
     public override void Init()
     {
         _closeButton.onClick.AddListener(Close);
-
-        CreateUpgradeItems();
     }
 
-    private void CreateUpgradeItems()
+    public void CreateUpgradeItems(UpgradeSelected onUpgradeSelected)
     {
         UpgradeItem[] upgradeItems = ResourcesService.GetUpgradeItems();
 
@@ -30,13 +28,8 @@ public class UIUpgradesPopup : UIPopup
 
             var display = obj.GetComponent<UpgradeItemDisplay>();
             if (display) {
-                display.Setup(upgradeItems[i], UpgradeSelected);
+                display.Setup(upgradeItems[i], onUpgradeSelected);
             }
         }
-    }
-
-    private void UpgradeSelected()
-    {
-        Debug.LogWarning("ADD Upgrade selection callback HERE!");
     }
 }

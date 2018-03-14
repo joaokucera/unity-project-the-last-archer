@@ -1,0 +1,20 @@
+﻿<Properties StartupConfiguration="{7C30CA80-AAF2-6895-C66E-ABBB6F8A6825}|">
+  <MonoDevelop.Ide.ItemProperties.src PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TheLastArcher/Scripts/Systems/UpgradeItem.cs">
+    <Files>
+      <File FileName="Assets/TheLastArcher/Scripts/Systems/UpgradeSystem.cs" Line="10" Column="24" />
+      <File FileName="Assets/TheLastArcher/Scripts/Systems/PoolingSystem.cs" Line="29" Column="6" />
+      <File FileName="Assets/TheLastArcher/Scripts/GUI/UIUpgradesPopup.cs" Line="17" Column="42" />
+      <File FileName="Assets/TheLastArcher/Scripts/Systems/UpgradeItem.cs" Line="29" Column="2" />
+      <File FileName="Assets/TheLastArcher/Scripts/Systems/UpgradeItemDisplay.cs" Line="13" Column="27" />
+      <File FileName="Assets/TheLastArcher/Scripts/Services/ResourcesService.cs" Line="9" Column="2" />
+      <File FileName="Assets/TheLastArcher/Scripts/Systems/UpgradeItemType.cs" Line="5" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

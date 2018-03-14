@@ -8,5 +8,11 @@ public class UpgradeSystem : MonoBehaviour
     private void Start()
     {
         _upgradesPopup.Init();
+        _upgradesPopup.CreateUpgradeItems(UpgradeSelected);
+    }
+
+    private void UpgradeSelected(UpgradeItemType type)
+    {
+        Debug.LogWarning("ADD Upgrade selection callback HERE! >>> " + type);
     }
 }

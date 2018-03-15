@@ -5,8 +5,6 @@ using UnityEngine.UI;
 [Serializable]
 public class UIUpgradesPopup : UIPopup
 {
-    private readonly string _tag = "UpgradeItem";
-
     [SerializeField]
     private Transform _upgradesParent;
     [SerializeField]
@@ -24,7 +22,7 @@ public class UIUpgradesPopup : UIPopup
         UpgradeItem[] upgradeItems = ResourcesService.GetUpgradeItems();
 
         for (int i = 0; i < upgradeItems.Length; i++) {
-            GameObject obj = _poolingSystem.Dequeue(_tag, _upgradesParent);
+            GameObject obj = _poolingSystem.Dequeue("UpgradeItem", _upgradesParent);
 
             var display = obj.GetComponent<UpgradeItemDisplay>();
             if (display) {

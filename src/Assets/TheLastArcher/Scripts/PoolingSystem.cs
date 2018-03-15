@@ -33,6 +33,11 @@ public class PoolingSystem : MonoBehaviour
         return Dequeue(tag, parent, Vector3.zero, Quaternion.identity);
     }
 
+    public GameObject Dequeue(string tag, Vector3 position)
+    {
+        return Dequeue(tag, _transform, position, Quaternion.identity);
+    }
+
     public GameObject Dequeue(string tag, Transform parent, Vector3 position, Quaternion rotation)
     {
         var obj = _poolDictionary[tag].Dequeue();
@@ -43,17 +48,8 @@ public class PoolingSystem : MonoBehaviour
 
         obj.gameObject.SetActive(true);
 
-        return obj;
-    }
-
-    public void Enqueue(string tag, GameObject obj)
-    {
-        obj.gameObject.SetActive(false);
-
-        obj.transform.SetParent(_transform);
-        obj.transform.position = Vector3.zero;
-        obj.transform.rotation = Quaternion.identity;
-
         _poolDictionary[tag].Enqueue(obj);
+
+        return obj;
     }
 }

@@ -3,6 +3,10 @@
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
+    private UIGameStatus _gameStatus;
+    [SerializeField]
+    private UIGameCommands _gameCommands;
+    [SerializeField]
     private UISettingsPopup _settingsPopup;
     [SerializeField]
     private UIPausedPopup _pausedPopup;
@@ -10,6 +14,18 @@ public class UIManager : MonoBehaviour
     private UIDefeatedPopup _defeatedPopup;
     [SerializeField]
     private UILevelClearedPopup _levelClearedPopup;
+
+    public UIGameStatus GameStatus {
+        get {
+            return _gameStatus;
+        }
+    }
+
+    public UIGameCommands GameCommands {
+        get {
+            return _gameCommands;
+        }
+    }
 
     public UISettingsPopup SettingsPopup {
         get {
@@ -37,6 +53,10 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        _gameStatus.Init();
+        _gameStatus.UpdateHearts();
+
+        _gameCommands.Init();
         _settingsPopup.Init();
         _pausedPopup.Init();
         _defeatedPopup.Init();
